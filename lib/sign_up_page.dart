@@ -1,33 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:login_page/sign_up_page.dart';
+import 'package:login_page/login_page.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<SignUpPage> createState() => _SignUpPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xff303030),
       body: SafeArea(
         child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                margin: EdgeInsets.only(bottom: 50),
-                child: Image.asset(
-                  'assets/images/logo.png',
-                  width: 50,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 35),
-                child: ConstrainedBox(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 35),
+            child: Wrap(
+              children: [
+                ConstrainedBox(
                   constraints: BoxConstraints(
                     maxWidth: 700,
                   ),
@@ -40,12 +32,9 @@ class _LoginPageState extends State<LoginPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(
-                            top: 50,
-                            bottom: 15,
-                          ),
+                          padding: const EdgeInsets.only(top: 50),
                           child: const Text(
-                            'Login',
+                            'Sign Up',
                             style: TextStyle(
                               color: Color(0xff1FAFAFA),
                               fontFamily: 'Quicksand',
@@ -79,7 +68,7 @@ class _LoginPageState extends State<LoginPage> {
                                 ),
                                 filled: true,
                                 fillColor: Color(0xff303030),
-                                hintText: 'Username or Email',
+                                hintText: 'Fullname',
                                 hintStyle: TextStyle(
                                   color: Color(0xff9A9A9A),
                                 ),
@@ -114,7 +103,7 @@ class _LoginPageState extends State<LoginPage> {
                                 ),
                                 filled: true,
                                 fillColor: Color(0xff303030),
-                                hintText: 'Password',
+                                hintText: 'Username',
                                 hintStyle: TextStyle(
                                   color: Color(0xff9A9A9A),
                                 ),
@@ -128,21 +117,20 @@ class _LoginPageState extends State<LoginPage> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                "Don't Have an Account?",
+                                "Already Have an Account?",
                                 style: TextStyle(
-                                    color: Colors.white,
-                                    fontFamily: 'Quicksand'),
+                                    color: Colors.white, fontFamily: 'Quicksand'),
                               ),
                               Container(
                                 margin: EdgeInsets.only(left: 10),
                                 child: InkWell(
                                   onTap: () {
                                     Navigator.push(context, MaterialPageRoute(builder: (context){
-                                      return SignUpPage();
+                                      return LoginPage();
                                     }));
                                   },
                                   child: Text(
-                                    'Sign Up',
+                                    'Log In',
                                     style: TextStyle(
                                       color: Colors.cyanAccent,
                                       fontFamily: 'Quicksand',
@@ -153,16 +141,9 @@ class _LoginPageState extends State<LoginPage> {
                             ],
                           ),
                         ),
-                        Container(
-                          margin: EdgeInsets.all(40),
-                          child: Image.asset(
-                            'assets/images/google_logo.png',
-                            height: 25,
-                          ),
-                        ),
                         Padding(
                           padding: const EdgeInsets.only(
-                              left: 20, right: 20, bottom: 40),
+                              left: 20, right: 20, bottom: 40, top: 30),
                           child: ConstrainedBox(
                             constraints: BoxConstraints(
                               maxWidth: 500,
@@ -178,11 +159,12 @@ class _LoginPageState extends State<LoginPage> {
                                 ),
                               ),
                               child: Text(
-                                'LOGIN',
+                                'SIGN UP',
                                 style: TextStyle(
-                                    color: Color(0xffFAFAFA),
-                                    fontFamily: 'Quicksand',
-                                    fontSize: 12),
+                                  color: Color(0xffFAFAFA),
+                                  fontFamily: 'Quicksand',
+                                  fontSize: 12,
+                                ),
                               ),
                             ),
                           ),
@@ -191,8 +173,8 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
