@@ -17,8 +17,16 @@ class _SignUpPageState extends State<SignUpPage> {
         child: Center(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 35),
-            child: Wrap(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                Container(
+                  margin: EdgeInsets.only(bottom: 50),
+                  child: Image.asset(
+                    'assets/images/logo.png',
+                    width: 50,
+                  ),
+                ),
                 ConstrainedBox(
                   constraints: BoxConstraints(
                     maxWidth: 700,
@@ -32,7 +40,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(top: 50),
+                          padding: const EdgeInsets.only(top: 50, bottom: 20),
                           child: const Text(
                             'Sign Up',
                             style: TextStyle(
@@ -112,7 +120,112 @@ class _SignUpPageState extends State<SignUpPage> {
                           ),
                         ),
                         Container(
-                          margin: EdgeInsets.all(10),
+                          margin: EdgeInsets.symmetric(
+                            horizontal: 20,
+                            vertical: 10,
+                          ),
+                          child: ConstrainedBox(
+                            constraints: BoxConstraints(
+                              maxWidth: 600,
+                            ),
+                            child: TextField(
+                              obscureText: true,
+                              style: TextStyle(
+                                color: Color(0xffFAFAFA),
+                                fontSize: 14,
+                                fontFamily: 'Quicksand',
+                                height: 1.1,
+                              ),
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(16),
+                                  borderSide: BorderSide(
+                                    width: 0,
+                                    style: BorderStyle.none,
+                                  ),
+                                ),
+                                filled: true,
+                                fillColor: Color(0xff303030),
+                                hintText: 'Email',
+                                hintStyle: TextStyle(
+                                  color: Color(0xff9A9A9A),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.symmetric(
+                            horizontal: 20,
+                            vertical: 10,
+                          ),
+                          child: ConstrainedBox(
+                            constraints: BoxConstraints(
+                              maxWidth: 600,
+                            ),
+                            child: TextField(
+                              obscureText: true,
+                              style: TextStyle(
+                                color: Color(0xffFAFAFA),
+                                fontSize: 14,
+                                fontFamily: 'Quicksand',
+                                height: 1.1,
+                              ),
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(16),
+                                  borderSide: BorderSide(
+                                    width: 0,
+                                    style: BorderStyle.none,
+                                  ),
+                                ),
+                                filled: true,
+                                fillColor: Color(0xff303030),
+                                hintText: 'Password',
+                                hintStyle: TextStyle(
+                                  color: Color(0xff9A9A9A),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.symmetric(
+                            horizontal: 20,
+                            vertical: 10,
+                          ),
+                          child: ConstrainedBox(
+                            constraints: BoxConstraints(
+                              maxWidth: 600,
+                            ),
+                            child: TextField(
+                              obscureText: true,
+                              style: TextStyle(
+                                color: Color(0xffFAFAFA),
+                                fontSize: 14,
+                                fontFamily: 'Quicksand',
+                                height: 1.1,
+                              ),
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(16),
+                                  borderSide: BorderSide(
+                                    width: 0,
+                                    style: BorderStyle.none,
+                                  ),
+                                ),
+                                filled: true,
+                                fillColor: Color(0xff303030),
+                                hintText: 'Confirm Password',
+                                hintStyle: TextStyle(
+                                  color: Color(0xff9A9A9A),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.all(15),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -143,7 +256,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(
-                              left: 20, right: 20, bottom: 40, top: 30),
+                              left: 20, right: 20, bottom: 40, top: 20),
                           child: ConstrainedBox(
                             constraints: BoxConstraints(
                               maxWidth: 500,

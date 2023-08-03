@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:login_page/home_page.dart';
 import 'package:login_page/sign_up_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -9,6 +10,9 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final TextEditingController _controllerUsername = TextEditingController();
+  final TextEditingController _controllerPassword = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,13 +66,19 @@ class _LoginPageState extends State<LoginPage> {
                             constraints: BoxConstraints(
                               maxWidth: 600,
                             ),
-                            child: TextField(
+                            child: TextFormField(
+                              controller: _controllerUsername,
                               style: TextStyle(
                                 color: Color(0xffFAFAFA),
                                 fontSize: 14,
                                 fontFamily: 'Quicksand',
                                 height: 1.1,
                               ),
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return 'Please enter your email or username';
+                                }
+                              },
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(16),
@@ -96,7 +106,8 @@ class _LoginPageState extends State<LoginPage> {
                             constraints: BoxConstraints(
                               maxWidth: 600,
                             ),
-                            child: TextField(
+                            child: TextFormField(
+                              controller: _controllerPassword,
                               obscureText: true,
                               style: TextStyle(
                                 color: Color(0xffFAFAFA),
@@ -104,6 +115,11 @@ class _LoginPageState extends State<LoginPage> {
                                 fontFamily: 'Quicksand',
                                 height: 1.1,
                               ),
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return 'Please enter your email or username';
+                                }
+                              },
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(16),
@@ -130,14 +146,16 @@ class _LoginPageState extends State<LoginPage> {
                               Text(
                                 "Don't Have an Account?",
                                 style: TextStyle(
-                                    color: Colors.white,
-                                    fontFamily: 'Quicksand'),
+                                  color: Colors.white,
+                                  fontFamily: 'Quicksand',
+                                ),
                               ),
                               Container(
                                 margin: EdgeInsets.only(left: 10),
                                 child: InkWell(
                                   onTap: () {
-                                    Navigator.push(context, MaterialPageRoute(builder: (context){
+                                    Navigator.push(context,
+                                        MaterialPageRoute(builder: (context) {
                                       return SignUpPage();
                                     }));
                                   },
@@ -168,7 +186,16 @@ class _LoginPageState extends State<LoginPage> {
                               maxWidth: 500,
                             ),
                             child: ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                setState(() {
+                                  if (!_controllerUsername.text.isEmpty && !_controllerPassword.text.isEmpty) {
+                                    Navigator.push(context,
+                                        MaterialPageRoute(builder: (context) {
+                                      return HomePage(username: _controllerUsername.value.text);
+                                    }));
+                                  }
+                                });
+                              },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: Color(0xff303030),
                                 minimumSize: const Size.fromHeight(50),
