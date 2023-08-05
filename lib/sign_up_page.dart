@@ -12,6 +12,7 @@ class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Color(0xff303030),
       body: SafeArea(
         child: Center(
@@ -74,6 +75,14 @@ class _SignUpPageState extends State<SignUpPage> {
                                     style: BorderStyle.none,
                                   ),
                                 ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(16),
+                                  borderSide: BorderSide(
+                                    width: 2,
+                                    style: BorderStyle.solid,
+                                    color: Colors.cyan,
+                                  ),
+                                ),
                                 filled: true,
                                 fillColor: Color(0xff303030),
                                 hintText: 'Fullname',
@@ -108,6 +117,14 @@ class _SignUpPageState extends State<SignUpPage> {
                                     style: BorderStyle.none,
                                   ),
                                 ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(16),
+                                  borderSide: BorderSide(
+                                    width: 2,
+                                    style: BorderStyle.solid,
+                                    color: Colors.cyan,
+                                  ),
+                                ),
                                 filled: true,
                                 fillColor: Color(0xff303030),
                                 hintText: 'Username',
@@ -140,6 +157,14 @@ class _SignUpPageState extends State<SignUpPage> {
                                   borderSide: BorderSide(
                                     width: 0,
                                     style: BorderStyle.none,
+                                  ),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(16),
+                                  borderSide: BorderSide(
+                                    width: 2,
+                                    style: BorderStyle.solid,
+                                    color: Colors.cyan,
                                   ),
                                 ),
                                 filled: true,
@@ -177,6 +202,14 @@ class _SignUpPageState extends State<SignUpPage> {
                                     style: BorderStyle.none,
                                   ),
                                 ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(16),
+                                  borderSide: BorderSide(
+                                    width: 2,
+                                    style: BorderStyle.solid,
+                                    color: Colors.cyan,
+                                  ),
+                                ),
                                 filled: true,
                                 fillColor: Color(0xff303030),
                                 hintText: 'Password',
@@ -210,6 +243,14 @@ class _SignUpPageState extends State<SignUpPage> {
                                   borderSide: BorderSide(
                                     width: 0,
                                     style: BorderStyle.none,
+                                  ),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(16),
+                                  borderSide: BorderSide(
+                                    width: 2,
+                                    style: BorderStyle.solid,
+                                    color: Colors.cyan,
                                   ),
                                 ),
                                 filled: true,
