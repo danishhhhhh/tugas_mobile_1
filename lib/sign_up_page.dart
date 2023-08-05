@@ -94,7 +94,6 @@ class _SignUpPageState extends State<SignUpPage> {
                               maxWidth: 600,
                             ),
                             child: TextField(
-                              obscureText: true,
                               style: TextStyle(
                                 color: Color(0xffFAFAFA),
                                 fontSize: 14,
@@ -129,7 +128,6 @@ class _SignUpPageState extends State<SignUpPage> {
                               maxWidth: 600,
                             ),
                             child: TextField(
-                              obscureText: true,
                               style: TextStyle(
                                 color: Color(0xffFAFAFA),
                                 fontSize: 14,

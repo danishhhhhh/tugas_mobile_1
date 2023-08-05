@@ -13,6 +13,9 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController _controllerUsername = TextEditingController();
   final TextEditingController _controllerPassword = TextEditingController();
 
+  bool _usernameValidation = true;
+  bool _passwordValidation = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,14 +26,14 @@ class _LoginPageState extends State<LoginPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                margin: EdgeInsets.only(bottom: 50),
+                margin: EdgeInsets.only(bottom: 50, top: 30),
                 child: Image.asset(
                   'assets/images/logo.png',
                   width: 50,
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 35),
+                padding: const EdgeInsets.only(right: 35, left: 35, bottom: 20),
                 child: ConstrainedBox(
                   constraints: BoxConstraints(
                     maxWidth: 700,
@@ -87,11 +90,19 @@ class _LoginPageState extends State<LoginPage> {
                                     style: BorderStyle.none,
                                   ),
                                 ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(16),
+                                  borderSide: BorderSide(
+                                    width: 2,
+                                    style: BorderStyle.solid,
+                                    color: Colors.cyan,
+                                  ),
+                                ),
                                 filled: true,
-                                fillColor: Color(0xff303030),
+                                fillColor: _usernameValidation ? Color(0xff303030) : Color(0xffD13838),
                                 hintText: 'Username or Email',
                                 hintStyle: TextStyle(
-                                  color: Color(0xff9A9A9A),
+                                  color: _usernameValidation ? Color(0xff9A9A9A) : Color(0xffFAFAFA),
                                 ),
                               ),
                             ),
@@ -128,11 +139,18 @@ class _LoginPageState extends State<LoginPage> {
                                     style: BorderStyle.none,
                                   ),
                                 ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(16),
+                                  borderSide: BorderSide(
+                                      width: 2,
+                                      style: BorderStyle.solid,
+                                      color: Colors.cyan),
+                                ),
                                 filled: true,
-                                fillColor: Color(0xff303030),
+                                fillColor: _usernameValidation ? Color(0xff303030) : Color(0xffD13838),
                                 hintText: 'Password',
                                 hintStyle: TextStyle(
-                                  color: Color(0xff9A9A9A),
+                                  color: _usernameValidation ? Color(0xff9A9A9A) : Color(0xffFAFAFA),
                                 ),
                               ),
                             ),
@@ -188,13 +206,36 @@ class _LoginPageState extends State<LoginPage> {
                             child: ElevatedButton(
                               onPressed: () {
                                 setState(() {
-                                  if (!_controllerUsername.text.isEmpty && !_controllerPassword.text.isEmpty) {
-                                    Navigator.push(context,
-                                        MaterialPageRoute(builder: (context) {
-                                      return HomePage(username: _controllerUsername.value.text);
-                                    }));
+                                  if (_controllerUsername.text == "admin" &&
+                                      _controllerPassword.text == "admin") {
+                                    _usernameValidation = true;
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) {
+                                          return HomePage(
+                                              username: _controllerUsername
+                                                  .value.text);
+                                        },
+                                      ),
+                                    );
+                                  } else if (_controllerUsername.text !=
+                                          "admin" &&
+                                      _controllerPassword.text != "admin") {
+                                    _usernameValidation = false;
+                                    _passwordValidation = false;
+                                  } else if (_controllerUsername.text !=
+                                      "admin") {
+                                    _usernameValidation = false;
+                                    _passwordValidation = true;
+                                  } else if (_controllerPassword.text !=
+                                      "admin") {
+                                    _usernameValidation = true;
+                                    _passwordValidation = false;
                                   }
                                 });
+                                print('username: $_usernameValidation');
+                                print('password: $_passwordValidation');
                               },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: Color(0xff303030),
@@ -207,9 +248,10 @@ class _LoginPageState extends State<LoginPage> {
                               child: Text(
                                 'LOGIN',
                                 style: TextStyle(
-                                    color: Color(0xffFAFAFA),
-                                    fontFamily: 'Quicksand',
-                                    fontSize: 12),
+                                  color: Color(0xffFAFAFA),
+                                  fontFamily: 'Quicksand',
+                                  fontSize: 12,
+                                ),
                               ),
                             ),
                           ),
@@ -224,5 +266,12 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _controllerUsername.dispose();
+    _controllerPassword.dispose();
+    super.dispose();
   }
 }
